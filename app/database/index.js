@@ -12,7 +12,8 @@ var logger 		= require('../logger');
 			config.db.host + ":" + 
 			config.db.port + "/" + 
 			config.db.name; */
-var dbURI = "mongodb://localhost:27017/chatio";
+//var dbURI = "mongodb://localhost:27017/chatio";
+var dbURI = process.env.MONGODB_URI
 Mongoose.connect(dbURI);
 
 // Throw an error if the connection fails
