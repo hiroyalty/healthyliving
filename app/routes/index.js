@@ -85,6 +85,14 @@ router.get('/auth/twitter/callback', passport.authenticate('twitter', {
 		failureFlash: true
 }));
 
+//room
+router.get('/rooms', [User.isAuthenticated, function(req, res, next) {
+        Room.find(function(err, rooms){
+		if(err) throw err;
+		res.render('rooms', { user: req.user, rooms: rooms, messagedrop: null });
+	});
+}]);
+
 // create rooms for member automatically
 router.get('/startroom', [User.isAuthenticated, function(req, res, next) {
         var username = req.user.username;
