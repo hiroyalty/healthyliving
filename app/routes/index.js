@@ -94,7 +94,7 @@ router.get('/startroom', [User.isAuthenticated, function(req, res, next) {
         Room.findOneAndUpdate({"title": userna }, {$set: {"status" : "started" }}, { new: true }, function(err, oneroom){
             if(err) throw err;
 		if(!oneroom){
-                    return next(); 
+                    //return next(); 
 		}
         });
         //Room.findOneAndUpdate({'title': username}, {$set: {"status" : "started" }}, { new: true },function (err, room){
@@ -147,7 +147,7 @@ router.get('/chat/:id', [User.isAuthenticated, function(req, res, next) {
         Room.findById(roomId, function(err, room){
 		if(err) throw err;
 		if(!room){
-			return next(); 
+			//return next(); 
 		}
 		res.render('chatroom', { user: req.user, room: room });
 	});
