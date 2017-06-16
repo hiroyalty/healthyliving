@@ -94,7 +94,7 @@ router.get('/startroom', [User.isAuthenticated, function(req, res, next) {
         Room.findOneAndUpdate({"title": userna }, {$set: {"status" : "started" }}, { new: true }, function(err, oneroom){
             if(err) throw err;
 		if(!oneroom){
-                    //return next(); 
+                    return next(); 
 		}
         });
         //Room.findOneAndUpdate({'title': username}, {$set: {"status" : "started" }}, { new: true },function (err, room){
@@ -130,13 +130,13 @@ router.get('/createpublic', [User.isAuthenticated, function(req, res, next) {
             Room.findOne({'roomtype': 'public'}, function(err, roomp){
 		if(err) throw err;
             if(roomp) {
-                res.status(301).redirect('/adminroom');
+                res.status(200).redirect('/adminroom');
             } else {
                 res.render('createpublic', { user: req.user });
             }
             });
         } else {
-            res.status(301).redirect('/startroom');
+            res.status(200).redirect('/startroom');
         }
 }]);
 
