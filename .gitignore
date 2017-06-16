@@ -74,3 +74,4 @@ Temporary Items
 ######################
 *.sql
 *.sqlite
+*.json
