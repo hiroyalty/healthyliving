@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ./partials/head2 %>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+        <header>
+            <% include ./partials/header %>
+	</header>
+    <div class="container clearfix" style="border: none; width: 500px; padding-top: 30px">
+      <div class="controls" style="border: none; width: 100%;">
+          <a href="/adminroom" class="logout-btn" style="width: auto; padding: 13px; font-size: 12px;">AdminPanel</a>
+      </div>
+
+      <div class="room" style="width: 100%;">
+        <div class="room-header clearfix">
+          <div class="room-about">
+            <div class="room-title">Create your private room <%= user.username %> to Chat with Admin</div>
+            <div class="room-num-rooms"><%= rooms.length %> Room(s)</div>
+          </div>
+          <i class="fa fa-th-list"></i>
+        </div> <!-- end room-header -->
+        </div> <!-- end  -->
+
+        <div class="room" style="width: 100%;">
+        <div class="room-create clearfix" style="border-bottom:2px solid white; display:none;">
+          <p class="room-title" style="text-align: center; padding: 0; margin: 0;">Wait for 5 Seconds After Click!</a></p>
+          <input type="text" name="title" value=<%= user.username %> readonly>
+          <input type="hidden" name="roomtype" value="private">
+          <button class="hideaway">Create</button>
+        </div> <!-- end room-create -->
+        </div> <!-- end roomx -->
+
+        <div class="room" style="width: 100%;">
+        <div class="room-list">
+          <ul>
+            <% if(rooms.length > 1) { %>
+              <% rooms.forEach(function(room) { %>      
+                  <a href="/chat/<%= room.id %>"><li class="room-item"><%= room.title %></li></a>
+                  <% }); %>
+            <% } else { %>
+              <p class="message" style="text-align: center; padding: 0; margin: 0;"><a href="#" class="roomx-create">Create your room!</a></p>
+            <% } %>
+          </ul>
+          <ul>
+            <% if(messagedrop != null) { %>
+                <p class="message" style="text-align: center; padding: 0; margin: 0;"><%= messagedrop %></p>
+            <% } %>
+          </ul>
+        </div> <!-- end room-list -->
+      </div> <!-- end room -->
+            
+        <script type="text/javascript"> 
+            $(function() {
+                $('.roomx-create').click(function() {
+                    $('.room-create').show();
+                    return false;
+                });
+                $('.hideaway').click(function() {
+                    setTimeout(function() {
+                    window.location.reload();
+                    }, 5000);
+                });
+            });
+        </script>
+    </div> <!-- end container -->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+    <script>$(function(){app.rooms()});</script>
+    <footer>
+	<% include ./partials/footer2 %>
+    </footer>
+  </body>
+</html>
