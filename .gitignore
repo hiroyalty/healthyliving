@@ -7,6 +7,7 @@ nbproject
 
 # Logs
 debug.log
+*.log
 
 # Windows image file caches
 Thumbs.db

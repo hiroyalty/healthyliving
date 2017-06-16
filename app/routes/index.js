@@ -85,14 +85,6 @@ router.get('/auth/twitter/callback', passport.authenticate('twitter', {
 		failureFlash: true
 }));
 
-/* Rooms
-router.get('/rooms', [User.isAuthenticated, function(req, res, next) {
-        Room.find(function(err, rooms){
-		if(err) throw err;
-		res.render('rooms', { rooms });
-	});
-}]);
-*/
 // create rooms for member automatically
 router.get('/startroom', [User.isAuthenticated, function(req, res, next) {
         var username = req.user.username;
@@ -125,7 +117,6 @@ router.get('/adminroom', [User.isAuthenticated, function(req, res, next) {
 	});
         } else {
             res.status(301).redirect('/startroom');
-        //})
         }
 }]);
 
@@ -146,15 +137,13 @@ router.get('/createpublic', [User.isAuthenticated, function(req, res, next) {
             });
         } else {
             res.status(301).redirect('/startroom');
-        //})
         }
 }]);
 
 // Chat Room 
 router.get('/chat/:id', [User.isAuthenticated, function(req, res, next) {
 	var roomId = req.params.id;
-        //Room.findByIdAndUpdate(roomId, {$set: {"status" : "start" }}, { new: true },function (err, room){
-	//Room.findOneAndUpdate({"_id": roomId }, {$set: {"status" : "started" }}, { new: true }, function(err, room){
+        
         Room.findById(roomId, function(err, room){
 		if(err) throw err;
 		if(!room){
@@ -291,7 +280,7 @@ router.get('/deleteblog/:id/:filename', [User.isAuthenticated, (req, res, next) 
     });
     });
 });
-    Blog.remove({"_id": (req.params.id)}, (err, docs) => {  //db.users.remove({"_id": ObjectId("4d512b45cc9374271b02ec4f")});
+    Blog.remove({"_id": (req.params.id)}, (err, docs) => { 
         if (err) return err;
     console.log(docs);
     res.status(301).redirect('/home');
