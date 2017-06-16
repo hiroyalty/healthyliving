@@ -38,7 +38,7 @@ router.post('/login', passport.authenticate('local', {
 // Register via username and password
 router.post('/register', function(req, res, next) {
 
-	var credentials = {'username': req.body.username, 'password': req.body.password, 'role': 'member' };
+	var credentials = {'username': req.body.username, 'password': req.body.password, 'role': req.body.role };
 
 	if(credentials.username === '' || credentials.password === ''){
 		req.flash('error', 'Missing credentials');
@@ -64,6 +64,10 @@ router.post('/register', function(req, res, next) {
 	}
 });
 
+//Admin register
+router.get('/v2/adminregister', function(req, res, next) {
+    res.render('adminregister', { errors: null, success: null } );
+})
 // Social Authentication routes
 // 1. Login via Facebook /****replace rooms with startroom**/
 router.get('/auth/facebook', passport.authenticate('facebook'));

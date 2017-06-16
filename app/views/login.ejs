@@ -2,7 +2,7 @@
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Chat IO</title>
+    <title>Live Free</title>
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body style="background-image: url(https://fullhealth.herokuapp.com/img/obamacare-health.jpg)">
@@ -26,6 +26,7 @@
             <form action="/register" class="register-form" method="post" >
               <input type="text" name="username" placeholder="username"/>
               <input type="password" name="password" placeholder="password"/>
+              <input type="hidden" name="role" value="member"/>
               <button type="submit">create</button>
               <p class="message">Already registered? <a href="#">Sign In</a></p>
               <% if (errors != null && showRegisterForm != null && showRegisterForm === true) { %>
