@@ -6,7 +6,7 @@
 		"port": "<MongoDBPort>",
 		"name": "<MongoDBName>"
 	},
-	"sessionSecret": "IMKJU89OIUer5t_$nbgiui",
+	"sessionSecret": "IMKJU89OIUer5tnbgiui",
 	"facebook": {
 		"clientID": "228514327666390",
 		"clientSecret": "5d12c4008b05151ab0ca1009c96afcd3",

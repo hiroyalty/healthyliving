@@ -72,7 +72,7 @@ router.get('/v2/adminregister', function(req, res, next) {
 // 1. Login via Facebook /****replace rooms with startroom**/
 router.get('/auth/facebook', passport.authenticate('facebook'));
 router.get('/auth/facebook/callback', passport.authenticate('facebook', {
-		successRedirect: '/rooms',
+		successRedirect: '/home',
 		failureRedirect: '/',
 		failureFlash: true
 }));
@@ -80,7 +80,7 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', {
 // 2. Login via Twitter
 router.get('/auth/twitter', passport.authenticate('twitter'));
 router.get('/auth/twitter/callback', passport.authenticate('twitter', {
-		successRedirect: '/rooms',
+		successRedirect: '/home',
 		failureRedirect: '/',
 		failureFlash: true
 }));
