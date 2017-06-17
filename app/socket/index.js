@@ -13,7 +13,7 @@ var Room = require('../models/room');
 var ioEvents = function(io) {
 
 	// Rooms namespace
-	io.of('/startroom').on('connection', function(socket) {
+	io.of('/rooms').on('connection', function(socket) {
 
 		// Create a new room
 		socket.on('createRoom', function(title, roomtype) {
@@ -34,7 +34,7 @@ var ioEvents = function(io) {
 			});
 		});
 	});
-        
+        /*
         io.of('/createpublic').on('connection', function(socket) {
 
 		// Create a new room //createPublicRoom
@@ -56,7 +56,7 @@ var ioEvents = function(io) {
 			});
 		});
 	});
-
+        */
 	// Chatroom namespace
 	io.of('/chatroom').on('connection', function(socket) {
 
