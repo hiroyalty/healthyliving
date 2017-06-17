@@ -13,7 +13,7 @@ var Room = require('../models/room');
 var ioEvents = function(io) {
 
 	// Rooms namespace
-	io.of('/rooms').on('connection', function(socket) {
+	io.of('/startroom').on('connection', function(socket) {
 
 		// Create a new room
 		socket.on('createRoom', function(title, roomtype) {
