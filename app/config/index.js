@@ -17,7 +17,7 @@ var init = function () {
 			facebook: {
 				clientID: process.env.facebookClientID,
 				clientSecret: process.env.facebookClientSecret,
-				callbackURL: "/auth/facebook/callback",
+				callbackURL: "https://fullhealth.herokuapp.com/auth/facebook/callback",
 				profileFields: ['id', 'displayName', 'photos']
 			},
 			twitter:{

@@ -6,6 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "engines": {
+    "node": "6.10.3"
+  },
   "repository": {
     "url": "git+https://github.com/hiroyalty/behealthy.git",
     "type": "git"
