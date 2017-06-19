@@ -209,6 +209,7 @@ router.get('/landing', [User.isAuthenticated, function(req, res, next) {
 ]);
 
 router.get('/home', [User.isAuthenticated, function(req, res, next) {
+    var userna = req.user.username;
     Room.findOneAndUpdate({"title": userna }, {$set: {"status" : "started" }}, { new: true }, function(err, oneroom){
             if(err) throw err;
 		if(!oneroom){
