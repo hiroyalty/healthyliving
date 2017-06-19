@@ -40,7 +40,7 @@
               <input type="text" name="username" placeholder="username"/>
               <input type="password" name="password" placeholder="password"/>
               <button type="submit">login</button>
-              <p class="message">Not registered? <a href="#" id="signbtn">Create an account</a></p>
+              <p class="message">Not registered? <a href="#">Create an account</a></p>
               <% if (errors != null && showRegisterForm == null) { %>
                 <% errors.forEach(function(err){ %>
                   <p class="message error"><%= err %></p>
@@ -59,7 +59,7 @@
         </script>
     <% } %>
     <script>
-        $("signbtn").click(function(){
+        $('.message a').click(function(){
             $('form, .social-buttons, .form-line').animate({height: "toggle", opacity: "toggle"}, "slow");
           });
     </script>
