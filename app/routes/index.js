@@ -315,6 +315,22 @@ router.get('/allblogs', [User.isAuthenticated, function(req, res, next) {
     })
 }]);
 
+//implementing search functionality
+router.post('/searchblog', [User.isAuthenticated, function(req, res, next) {
+        var searchinfo = req.body.searchinfo;
+        console.log(searchinfo);
+    Blog.find({ $or: [{ title: { $regex: searchinfo, $options: 'i' }}, { category: { $regex: searchinfo, $options: 'i' }}]}, function(err, blogs){
+    //Blog.find({ $or: [{ title: { $regex: '/'+searchinfo+'$/' }}, { category: { $regex: '/'+searchinfo+'$/' }}], $and:[{ published: "yes", dateexpired: {$gt: new Date() }}]}, function(err, blogs){
+        if(err) throw err;
+        //console.log(blogs);
+    if(blogs.length > 0){
+        res.render('pages/allblogs', { user: req.user.username, blogs: blogs, message: null });
+    } else {
+        res.render('pages/allblogs', { user: req.user.username, blogs: blogs, message: 'Search Content not Available'});
+        //res.status(301).redirect('/landing');
+    }    
+    })
+}]);
 /**************************************/
 
 /********Update User Account************/
