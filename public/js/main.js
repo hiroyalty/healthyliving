@@ -128,8 +128,8 @@ var app = {
         });
 
         // Whenever the user hits the save button, emit newMessage event.
-        $(".chat-message button").on('click', function(e) {
-
+        //$(".chat-message button").on('click', function(e) { snd-msgg
+        $("#snd-msgg").on('click', function(e) {
           var textareaEle = $("textarea[name='message']");
           var messageContent = textareaEle.val().trim();
           if(messageContent !== '') {
