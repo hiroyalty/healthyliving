@@ -26,6 +26,7 @@ var UserSchema = new Mongoose.Schema({
     height: {type: Number, default: null},
     weight: {type: Number, default: null},
     role: { type: String, enum: ['member', 'manager', 'admin'], default: 'member' },
+    roomtype: {type: String, enum: ['public','private'], default: 'private'},
     preference: {type: [], default: null},
     phonenumber: {type: String, default: null},
     meansofcontact: {type: String, enum: ['phone', 'email', 'none'], default: 'none'},

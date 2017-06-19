@@ -20,7 +20,7 @@ var ioEvents = function(io) {
 			Room.findOne({'title': new RegExp('^' + title + '$', 'i')}, function(err, room){
 				if(err) throw err;
 				if(room){
-					socket.emit('updateRoomsList', { error: 'Room title already exists.' });
+					socket.emit('updateRoomsList', { error: 'Your Room already exists.' });
 				} else {
 					Room.create({ 
 						title: title,

@@ -85,26 +85,27 @@ router.get('/auth/twitter/callback', passport.authenticate('twitter', {
 		failureFlash: true
 }));
 
-/*room
+//room
 router.get('/rooms', [User.isAuthenticated, function(req, res, next) {
         Room.find(function(err, rooms){
 		if(err) throw err;
-		res.render('rooms', { user: req.user, rooms: rooms, messagedrop: null });
+		res.render('rooms', { user: req.user, rooms: rooms });
 	});
 }]);
-*/
+
+/*
 // create rooms for member automatically
 router.get('/startroom', [User.isAuthenticated, function(req, res, next) {
         var username = req.user.username;
         var nomessage = null;
         var listrooms = [];
         var userna = req.user.username;
-        Room.findOneAndUpdate({"title": userna }, {$set: {"status" : "started" }}, { new: true }, function(err, oneroom){
-            if(err) throw err;
-		if(!oneroom){
+        //Room.findOneAndUpdate({"title": userna }, {$set: {"status" : "started" }}, { new: true }, function(err, oneroom){
+            //if(err) throw err;
+		//if(!oneroom){
                     //return next(); 
-		}
-        });
+		//}
+        //});
         //Room.findOneAndUpdate({'title': username}, {$set: {"status" : "started" }}, { new: true },function (err, room){
         Room.find({ $or: [{'title': username}, {'roomtype':'public'}]}, function(err, rooms){
             if(err) throw err;
@@ -147,7 +148,7 @@ router.get('/createpublic', [User.isAuthenticated, function(req, res, next) {
             res.status(200).redirect('/startroom');
         }
 }]);
-
+*/
 // Chat Room 
 router.get('/chat/:id', [User.isAuthenticated, function(req, res, next) {
 	var roomId = req.params.id;
@@ -208,6 +209,12 @@ router.get('/landing', [User.isAuthenticated, function(req, res, next) {
 ]);
 
 router.get('/home', [User.isAuthenticated, function(req, res, next) {
+    Room.findOneAndUpdate({"title": userna }, {$set: {"status" : "started" }}, { new: true }, function(err, oneroom){
+            if(err) throw err;
+		if(!oneroom){
+                    //return next(); 
+		}
+        });
     Blog.find({ published: "yes", dateexpired: {$gt: new Date() }}, function(err, blogs){
         if(err) throw err;
         if(blogs.length > 0){

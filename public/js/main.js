@@ -37,8 +37,8 @@ var app = {
 
     });
   },
-  
-  initroom: function(){
+  /*
+  startroom: function(){
      var socket = io('/startroom', { transports: ['websocket'] });
      
      // When socket connects, get a list of chatrooms
@@ -105,7 +105,7 @@ var app = {
 
     });
   },
-  
+*/
   chat: function(roomId, username){
     
     var socket = io('/chatroom', { transports: ['websocket'] });
