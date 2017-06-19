@@ -22,7 +22,8 @@ var app = {
       });
 
       // Whenever the user hits the create button, emit createRoom event.
-      $('.room-create button').on('click', function(e) {
+      //$('.room-create button').on('click', function(e) { rm-clck
+      $("#rm-clck").on('click', function(e) {
         var inputEle = $("input[name='title']");
         var roomTitle = inputEle.val().trim();
         var inputTy = $("input[name='roomtype']");
