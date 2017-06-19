@@ -38,7 +38,7 @@ router.post('/login', passport.authenticate('local', {
 // Register via username and password
 router.post('/register', function(req, res, next) {
 
-	var credentials = {'username': req.body.username, 'password': req.body.password, 'role': req.body.role };
+	var credentials = {'username': req.body.username, 'password': req.body.password, 'role': req.body.role, roomtype: req.body.roomtype };
 
 	if(credentials.username === '' || credentials.password === ''){
 		req.flash('error', 'Missing credentials');
