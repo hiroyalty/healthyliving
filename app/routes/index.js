@@ -88,6 +88,7 @@ router.get('/auth/twitter/callback', passport.authenticate('twitter', {
 //room
 router.get('/rooms', [User.isAuthenticated, function(req, res, next) {
     var userrole = req.user.role;
+    var username = req.user.username;
     if(userrole == 'admin') {
     Room.find(function(err, rooms){
         if(err) throw err;
