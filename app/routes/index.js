@@ -87,10 +87,18 @@ router.get('/auth/twitter/callback', passport.authenticate('twitter', {
 
 //room
 router.get('/rooms', [User.isAuthenticated, function(req, res, next) {
-        Room.find(function(err, rooms){
-		if(err) throw err;
-		res.render('rooms', { user: req.user, rooms: rooms });
-	});
+    var userrole = req.user.role;
+    if(userrole == 'admin') {
+    Room.find(function(err, rooms){
+        if(err) throw err;
+            res.render('rooms', { user: req.user, rooms: rooms });
+    });
+    }   else {
+    Room.find({ $or: [{'title': username}, {'roomtype':'public'}]}, function(err, rooms){
+    if(err) throw err;
+        res.render('rooms', { user: req.user, rooms: rooms });
+    })
+    }
 }]);
 
 /*
