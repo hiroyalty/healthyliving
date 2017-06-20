@@ -6,16 +6,16 @@
 		"port": "<MongoDBPort>",
 		"name": "<MongoDBName>"
 	},
-	"sessionSecret": "IMKJU89OIUer5tnbgiui",
+	"sessionSecret": "somestring",
 	"facebook": {
-		"clientID": "228514327666390",
-		"clientSecret": "5d12c4008b05151ab0ca1009c96afcd3",
+		"clientID": "clientID",
+		"clientSecret": "clientID",
 		"callbackURL": "/auth/facebook/callback",
 		"profileFields": ["id", "displayName", "photos"]
 	},
 	"twitter": {
-		"consumerKey": "b8UlQzxScTVh6lmm7A0LJOFmm",
-		"consumerSecret": "XVdnf0IEfhk6vr2JpvSeo8Ze51ahNZumzCFMDbKrrEQxdmokHK",
+		"consumerKey": "consumerKey",
+		"consumerSecret": "consumerKey",
 		"callbackURL": "/auth/twitter/callback",
 		"profileFields": ["id", "displayName", "photos"]
 	},
