@@ -351,6 +351,9 @@ router.post('/updateuser', [User.isAuthenticated, function(req, res, next) {
   
   User.findOneAndUpdate({"_id": req.user._id}, 
     {$set: {
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
         dateofbirth: req.body.dateofbirth,
         height: req.body.height,
 	weight: req.body.weight,
@@ -371,6 +374,15 @@ router.post('/updateuser', [User.isAuthenticated, function(req, res, next) {
   })
 }]);
 
+//show user profile
+router.get('/profile', [User.isAuthenticated, function(req, res, next) {
+    User.findOne({'username': req.user.username}, function(err, user){
+        if(err) throw err;
+        var date = new Date(user.dateofbirth)
+        var datestr = date.toDateString()
+        res.render('pages/profile', { user: user, datee: datestr });
+    }) 
+}]);
 /********Update User account Ends*************/
 
 /********Booking************/
