@@ -360,7 +360,7 @@ router.post('/updateuser', [User.isAuthenticated, function(req, res, next) {
         email: req.body.email,
         dateofbirth: req.body.dateofbirth,
         height: req.body.height,
-	weight: req.body.weight,
+	    weight: req.body.weight,
         phonenumber: req.body.phonenumber,
         meansofcontact: req.body.optionsRadios,
         address: {  'streetaddress': req.body.streetaddress,
