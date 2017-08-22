@@ -348,7 +348,11 @@ router.get('/updateuser', [User.isAuthenticated, function(req, res, next) {
 }]);
 
 router.post('/updateuser', [User.isAuthenticated, function(req, res, next) {
-  
+  console.log(req.body.preference);
+  if (req.body.preference.constructor === Array){} 
+    else {
+        req.body.preference = [req.body.preference, 'general']
+  }
   User.findOneAndUpdate({"_id": req.user._id}, 
     {$set: {
         firstname: req.body.firstname,

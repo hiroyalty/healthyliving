@@ -89,3 +89,11 @@ h3.message{
 ul.user-details{
     list-style: none;
 }
+a.finebutton {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: blue;
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<% include ../partials/head %>
+    <% include ../partials/head %>
 </head>
 <body class="container">
 
@@ -11,87 +11,111 @@
 
 	<main>
 		<div class="container">
-				<div class="col-sm-6.col-md-4.col-md-offset-4">
-					<h1 class="text-center">Update your Settings</h1>
-                                        <% if(messagedrop!=null){ %>
-                                            <h4 class="text-center" style="color: #00B7FF"><%= messagedrop %></h4>
-                                        <%}%>
-						<div class="signup-wall">
-							<form class="form-signin", action="/updateuser", method="POST">
-                                                                <div class="form-group">
-                                                                    <input type="text", name="firstname", class='form-control', placeholder='First Name', required, autofocus></input>
-								</div>
-                                                                <div class="form-group">
-                                                                    <input type="text", name="lastname", class='form-control', placeholder='Last Name', autofocus></input>
-								</div>
-                                                                <div class="form-group">
-                                                                    <input type="text", name="email", class='form-control', placeholder='Email', autofocus></input>
-								</div>
-								<div class="form-group">
-									<label for="dateofbirth">Input your date of birth</label>
-									<input type="date", name="dateofbirth", class='form-control', placeholder='MM/DD/YYYY', autofocus></input>
-								</div>
-								<div class="form-group">
-									<input type="number", value="170", name="height", class='form-control',required></input>
-                                                                        <label for="height">select input number in centimeters</label>
-								</div>
-								<div class="form-group">
-									<input type="number", value="80", name="weight", class='form-control',required></input>
-                                                                        <label for="weight">select input number in kg</label>
-								</div>
-								<div class="form-group">
-									<label for="preference">What would you want Information About</label>
-									<select multiple class="form-control", name="preference", id="preference">
-									<option value="blood pressure">Blood Pressure</option>
-									<option value="cholesterol control">Cholesterol Control</option>
-									<option value="blood sugar control">Blood Sugar Control</option>
-									<option value="loose weight">Loose Weight</option>
-                                                                        <option value="get active">Get Activet</option>
-                                                                        <option value="addiction">Addiction</option>
-									</select>
-								</div>
-                                                                <div class="form-group">
-                                                                    <input type="tel", name="phonenumber", class='form-control', placeholder='+358-469685462', required, autofocus></input>
-								</div>
-                                                                <div class="form-group">
-                                                                    <input type="text", name="streetaddress", class='form-control nomargin', placeholder='Street Name',required></input>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="text", name="city", class='form-control', placeholder='City Name',required, autofocus></input>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="String", name="zip", class='form-control', placeholder='zipcode',required, autofocus></input>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="text", name="region", class='form-control', placeholder='Region Name',required, autofocus></input>
-                                                                </div>
-								<fieldset class="form-group">
-								<legend>Contact me through</legend>
-								<div class="form-check">
-								<label class="form-check-label">
-								<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="email" checked>
-								Email
-								</label>
-								</div>
-								<div class="form-check">
-								<label class="form-check-label">
-								<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="phone">
-								Phone
-								</label>
-								</div>
-								<div class="form-check disabled">
-								<label class="form-check-label">
-								<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="none">
-								Do not contact me
-								</label>
-								</div>
-								</fieldset>
+			<div class="col-sm-6.col-md-4.col-md-offset-4">
+				<h1 class="text-center">Update your Settings</h1>
+                    <% if(messagedrop!=null){ %>
+                    <h4 class="text-center" style="color: #00B7FF"><%= messagedrop %></h4>
+                    <%}%>
+			<div class="signup-wall">
+				<form class="form-signin", data-toggle="validator", id="setupForm", action="/updateuser", method="POST">
+                    <div class="form-group">
+                        <label for="firstName" class="control-label">First Name</label>
+                        <input type="text", name="firstname", minlength="2" class='form-control', placeholder='First Name', data-error="Fill in your First Name" required></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="control-label">Last Name</label>
+                        <input type="text", name="lastname", minlength="2" class='form-control', placeholder='Last Name' data-error="Fill in your Last Name", required></input>
+					</div>
+                    <div class="form-group">
+                        <label for="email" class="control-label">Email</label>
+                        <input type="email", name="email", class='form-control', placeholder='Email', data-error="email address is invalid" required></input>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateofbirth">Date of birth</label>
+                        <!--<input type="date", name="dateofbirth", class='form-control', placeholder='MM/DD/YYYY', data-error="fill in your date of birth" required></input>
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>-->
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                             <i class="fa fa-calendar">
+                             </i>
+                            </div>
+                            <input class="form-control" id="dateofbirth" name="date" placeholder="MM/DD/YYYY" type="text" data-date-end-date="0d" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="height">Height number in centimeters</label>
+                        <input type="number", value="170", name="height", class='form-control', data-error="select your height", required></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Weight number in kg</label>
+                        <input type="number", value="80", name="weight", class='form-control', data-error="select your weight", required></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="preference">What would you want Information About</label>
+                        <select multiple class="form-control", name="preference", id="preference" data-error="select your options", required>
+                        <option value="blood pressure">Blood Pressure</option>
+                        <option value="cholesterol control">Cholesterol Control</option>
+                        <option value="blood sugar control">Blood Sugar Control</option>
+                        <option value="loose weight">Loose Weight</option>
+                        <option value="get active">Get Active</option>
+                        <option value="addiction">Addiction</option>
+                        </select>
+                        <label for="pref">select single or multiple options</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="control-label">Phone number</label>
+                        <input type="tel", name="phoneNumber", class='form-control', placeholder='+358-XXX-XXX-XXX', 
+                        pattern="^\+\d{3}-\d{3}-\d{3}-\d{3}$", data-error="Use the Right phone Number Format" required></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="streetaddress" class="control-label">Street</label>
+                        <input type="text", name="streetaddress", class='form-control nomargin', placeholder='Street', data-error="Fill in your Street Address" required></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="city" class="control-label">City</label>
+                        <input type="text", name="city", class='form-control', placeholder='City', data-error="Fill in your City", required></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="zipcode" class="control-label">Zip Code</label>
+                        <input type="String", name="zip", class='form-control', placeholder='zip code', data-error="Fill in your Zip Code", required></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="region" class="control-label">Municipal</label>
+                        <input type="text", name="region", class='form-control', placeholder='Region', data-error="Fill in your Region", required></input>
+                    </div>
+                    <div class="form-group">
+                    <legend>Contact me through</legend>
+                    <div class="radio">
+                        <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="email" required>
+                        Email
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="phone" required>
+                        Phone
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="none" required>
+                        Do not contact me
+                        </label>
+                    </div>
+                    </div>
 
-								<button class="btn btn-lg btn-primary btn-block", type="submit">Submit</button>
-							</form>
-							<span class="clearfix"></span>
-						</div>
-				</div>
+                    <button class="btn btn-lg btn-primary btn-block", type="submit">Submit</button>
+                    </form>
+                    
+                </div>
+        </div>
 		</div>
 	</main>
 
@@ -100,4 +124,4 @@
 	</footer>
 	
 </body>
-</html>
+</html> 
